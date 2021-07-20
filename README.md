@@ -570,7 +570,7 @@ If you are still using the `datastaxdevs` repo please ensure to follow the previ
 ℹ️ _It may take a moment for GitPod to fully initialize.
 
 ## 4. Install the Netlify CLI (Command Line Interface)
- * In the `appdev-week3-graphql` directory run the following command to install the netlify-cli
+ * In the `/workspace/appdev-week3-graphql` directory (where you start) run the following command to install the netlify-cli
  ```
  npm install -g netlify-cli
 ```
