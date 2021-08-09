@@ -8,6 +8,7 @@ tasks:
       npm install
     command: |
       git remote -v | grep synedra && exit
+      git remote -v
       echo "workshop-astra-NETFLIX gitpod ready - LET'S DO THIS!"
       gp open README.md
 ports:
