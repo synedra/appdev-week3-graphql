@@ -69,34 +69,32 @@ That's it, you are done! Expect an email next week!
 
 ## Table of contents
 
-### Part I - DB Setup & Data Ingest
+### Part I - DB & Workspace setup
 1. [Create Astra DB Instance](#1-login-or-register-to-astradb-and-create-database)
-2. [Create a security token](#2-create-a-security-token)
-3. [Create table **genre** with GraphQL](#3-create-table-genre-with-graphql)
-4. [Insert data in **genre**  with GraphQL](#4-insert-data-in-the-table-with-graphql)
-5. [Retrieve values of **genre** table](#5-retrieving-list-of-values)
-6. [Create **movie** table](#6-creating-a-movies-table)
-7. [Insert values in **movie** table](#7-insert-values-in-movie-table)
-8. [Retrieve values from **movie** table](#8-retrieve-values-from-movie-tables)
-9. [Load a CSV DataSet](#9-load-a-csv-dataset)
+2. [Deploy to Netlify](#2-deploy-to-netlify)
+5. [Clone your GitHub repository](#3-clone-your-github-repository)
+6. [Launch GitPod](4-launch-gitpod-ide)
+3. [Create a security token](#2-create-a-security-token)
+7. [Install the Netlify CLI](#6-install-the-netlify-cli-command-line-interface)
+8. [Connect Netlify to your site](#9-connect-netlify-to-your-site)
+9. [Launch your App Locally](#8-launch-your-app)
 
-###  Part II - Deploy to Production
-1. [Deploy to Netlify](#1-deploy-to-netlify)
-2. [Clone your GitHub repository](#2-clone-your-github-repository)
-3. [Launch GitPod](#3-launch-gitpod-ide)
-4. [Install the Netlify CLI](#4-install-the-netlify-cli-command-line-interface)
-5. [Retrieve application token to securely connect to the database](#5-generate-application-token-to-securely-connect-to-the-database)
-6. [Configure Environment Variables and Install Dependencies](#6-configure-and-connect-database)
-7. [Launch your app](#7-launch-your-app)
-8. [Connect Netlify to your site](#8-connect-netlify-to-your-site)
-9. [Deploy to production](#9-deploy-to-production)
-
+### Part II - Manipulating data
+1. [Create table **genre** with GraphQL](#3-create-table-genre-with-graphql)
+2. [Insert data in **genre**  with GraphQL](#4-insert-data-in-the-table-with-graphql)
+3. [Retrieve values of **genre** table](#5-retrieving-list-of-values)
+4. [Create **movie** table](#6-creating-a-movies-table)
+5. [Insert values in **movie** table](#7-insert-values-in-movie-table)
+6. [Retrieve values from **movie** table](#8-retrieve-values-from-movie-tables)
+7. [Load a CSV DataSet](#9-load-a-csv-dataset)
+8. [Deploy to production](#9-deploy-to-production)
+9. 
 ### Extra resources
 [What is JamStack?](https://github.com/datastaxdevs/workshop-battlestax/blob/master/README_JAM.md)
 
 [Video tutorial with Ania Kubow](#video-tutorial-with-ania-kubow)
 
-# Part 1 - DB Setup & Data Ingest
+# Part 1 - DB & Workspace Setup
 
 ## 1. Login or Register to AstraDB and create database
 
@@ -130,21 +128,179 @@ The status will change to `Active` when the database is ready, this will only ta
 
 [🏠 Back to Table of Contents](#table-of-contents)
 
+## 2. Deploy to Netlify
 
-## 2. Create a security token
+- <details><summary> What does the netlify deploy button do?</summary>The Netlify deploy button will:<ul>
+    <li>Create a new repository for you on Github</li>
+    <li>Create a site on Netlify</li>
+    <li>Link the two together.</li></ul>
+</details>
+
+- Click the button to deploy
+
+  [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/datastaxdevs/appdev-week3-graphql)
+ * <details><summary>Show me!</summary>
+    <img src="tutorial/images/deploy-to-netlify.gif?raw=true" />
+    </details>
+
+This will take a few minutes.
+
+  * Click on `Site deploy in progress` within the Netlify UI, 
+    <details>
+    <summary>Show me! </summary>
+    <img src="tutorial/images/deploy-1.png" />
+    </details>
+
+  * Click the top deploy link to see the build process.
+    <details>
+    <summary>Show me! </summary>
+    <img src="tutorial/images/deploy-2.png" />
+    </details>
+
+  * Wait until the build complete `Netlify Build Complete`,  **When you see Pushing to repository** you're ready to move on.
+    <details>
+    <summary>Show me! </summary>
+    <img src="tutorial/images/deploy-3.png" />
+    </details>
+
+  * Scroll up to the top and click on the site name (it'll be after {yourlogin}'s Team next to the Netlify button).
+    <details>
+    <summary>Show me! </summary>
+    <img src="tutorial/images/deploy-4.png" />
+    </details>
+
+## 3. Clone your GitHub repository
+
+  * Click on the `GitHub` in `Deploys from GitHub` to get back to your new repository.  Scroll to where you were in the README.
+    <details>
+    <summary>Show me! </summary>
+    <img src="tutorial/images/deploy-5.png" />
+    </details>
+
+
+👩‍💻  Install all the packages
+
+```bash
+npm install
+```
+## 8. Connect Netlify to your site
+
+Execute each of the commands below to link your code to your Netlify deployment.
+
+✅ **Step 8a:**  we'll need to **STOP** the `netlify dev` command we issued a moment ago. In the terminal where you executed the netlify command issue a `CTRL+C` (control key + the C key) in order to stop the process.
+
+✅ **Step 8b:** Enter the following command to pop up a browser to authenticate with netlify
+
+  ```
+  netlify login
+  ```
+
+*👁️ Expected output*
+```
+Opening https://app.netlify.com/authorize?....
+⠋ Waiting for authorization...^C
+```
+
+✅ **Step 8c:** Open the link in a new WINDOW for the link to work, and authorize Netlify CLi to access Netlify on your behalf.
+
+  > When using GitPod the preview pane **will not display this properly.** You must click the "open in a new window" button in the very top right of the preview pane._
+
+*👁️ Expected output*
+
+```
+You are now logged into your Netlify account!
+Run netlify status for account details
+To see all available commands run: netlify help
+gitpod /workspace/appdev-week3-graphql $ 
+```
+
+✅ **Step 8d:** link your workspace to the associated site with the following command
+
+```
+netlify link
+```
+
+*👁️ Expected output*
+
+![image](tutorial/images/netlify-link.png?raw=true)
+
+✅ **Step 8e:** take the .env file upload it to netlify
+  
+  ```
+  netlify env:import .env
+  ```
+
+<!--
+  * Will be used to allow you to execute `netlify open`
+  ```
+  netlify sites:list
+  ```
+-->
+
+## 7. Launch your app
+  * Run the application 
+  ```
+  netlify dev
+  ```
+  * The application should automatically launch in the GitPod preview pane
+
+
+## 2. Create and store a security token
 
 ✅  **Step 2a:**  [Create a token for your app](https://docs.datastax.com/en/astra/docs/manage-application-tokens.html) to use in the settings screen. Use "Database Administrator" permission.
 
-✅  **Step 2b:**  Copy the token value (eg `AstraCS:KDfdKeNREyWQvDpDrBqwBsUB:ec80667c....`) in your clipboard and save the CSV, this value would not be provided afterward.
+✅  **Step 2b:**  Copy the token value (eg `AstraCS:KDfdKeNREyWQvDpDrBqwBsUB:ec80667c....`) in your clipboard and save the CSV, this value will not be available afterward.
 
 **👁️ Expected output**
 - <details><summary>Show me!</summary>
     <img src="img/astra-create-token.gif?raw=true" />
 </details>
 
+✅  **Step 2c:**  In the terminal, install astra-setup module and run it, using the `AstraCS:` token you just copied.
+``` bash
+npm install -g astra-setup
+npm exec astra-setup netflix_workshop_db netflix_keyspace
+```
+
+
+
 [🏠 Back to Table of Contents](#table-of-contents)
 
-## 3. Create table **genre** with GraphQL
+## 3. Get your environment ready
+- Click the button to launch the GitPod IDE from **YOUR** repository.
+
+* _Supported by <img src="tutorial/images/chrome-logo.svg" height="20"/> Chrome and <img src="tutorial/images/firefox-logo.svg" height="20"/> Firefox_
+
+### WAIT! Before moving on ensure you are working out of YOUR repository, not the datastaxdevs repository.
+
+![correct notcorrect](tutorial/images/correct-not-correct.png?raw=true)
+
+If you are still using the `datastaxdevs` repo please ensure to follow the previous step, [step3](#3-clone-your-github-repository) to get to your repo.
+
+ * Ok, I've got it, just give me the button already
+ * <details>
+     <summary>CLICK HERE to launch GitPod</summary>
+
+     [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
+   </details>
+   
+ℹ️ _It may take a moment for GitPod to fully initialize.
+
+## 4. Install the Netlify CLI (Command Line Interface)
+ * In the `/workspace/appdev-week3-graphql` directory (where you start) run the following command to install the netlify-cli
+ ```
+ npm install -g netlify-cli
+```
+
+ * <details><summary>Show me!</summary>
+    <img src="tutorial/images/netlify-install-cli.png?raw=true" />
+    </details>
+
+
+
+
+
+## 3. Start the interactive tool for working with GraphQL
 
 ✅  **Step 3a:** Open **GraphQL Playground** by 
 1. Click on your active database
@@ -500,173 +656,7 @@ As you can see the operation here is asynchronous. About a minute later your wil
 
 # Part 2 - Deploy to Production
 
-## 1. Deploy to Netlify
 
-- <details><summary> What does the netlify deploy button do?</summary>The Netlify deploy button will:<ul>
-    <li>Create a new repository for you on Github</li>
-    <li>Create a site on Netlify</li>
-    <li>Link the two together.</li></ul>
-</details>
-
-- Click the button to deploy
-
-  [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/datastaxdevs/appdev-week3-graphql)
- * <details><summary>Show me!</summary>
-    <img src="tutorial/images/deploy-to-netlify.gif?raw=true" />
-    </details>
-
-This will take a few minutes.
-
-  * Click on `Site deploy in progress` within the Netlify UI, 
-    <details>
-    <summary>Show me! </summary>
-    <img src="tutorial/images/deploy-1.png" />
-    </details>
-
-  * Click the top deploy link to see the build process.
-    <details>
-    <summary>Show me! </summary>
-    <img src="tutorial/images/deploy-2.png" />
-    </details>
-
-  * Wait until the build complete `Netlify Build Complete`,  **When you see Pushing to repository** you're ready to move on.
-    <details>
-    <summary>Show me! </summary>
-    <img src="tutorial/images/deploy-3.png" />
-    </details>
-
-  * Scroll up to the top and click on the site name (it'll be after {yourlogin}'s Team next to the Netlify button).
-    <details>
-    <summary>Show me! </summary>
-    <img src="tutorial/images/deploy-4.png" />
-    </details>
-
-## 2. Clone your GitHub repository
-
-  * Click on the `GitHub` in `Deploys from GitHub` to get back to your new repository.  Scroll to where you were in the README.
-    <details>
-    <summary>Show me! </summary>
-    <img src="tutorial/images/deploy-5.png" />
-    </details>
-
-## 3. Launch GitPod IDE
-- Click the button to launch the GitPod IDE from **YOUR** repository.
-
-* _Supported by <img src="tutorial/images/chrome-logo.svg" height="20"/> Chrome and <img src="tutorial/images/firefox-logo.svg" height="20"/> Firefox_
-
-### WAIT! Before moving on ensure you are working out of YOUR repository, not the datastaxdevs repository.
-
-![correct notcorrect](tutorial/images/correct-not-correct.png?raw=true)
-
-If you are still using the `datastaxdevs` repo please ensure to follow the previous step, [step3](#3-clone-your-github-repository) to get to your repo.
-
- * Ok, I've got it, just give me the button already
- * <details>
-     <summary>CLICK HERE to launch GitPod</summary>
-
-     [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
-   </details>
-   
-ℹ️ _It may take a moment for GitPod to fully initialize.
-
-## 4. Install the Netlify CLI (Command Line Interface)
- * In the `/workspace/appdev-week3-graphql` directory (where you start) run the following command to install the netlify-cli
- ```
- npm install -g netlify-cli
-```
-
- * <details><summary>Show me!</summary>
-    <img src="tutorial/images/netlify-install-cli.png?raw=true" />
-    </details>
-
-## 5. Retrieve application token to securely connect to the database
-
-Use the token you previously generated. If you no longer have the token and did not download a .csv, you can generate a new token using [the instructions above](#2-create-a-security-token)
-
-You will also need the GraphQL Endpoint for your keyspace.
-First, go to the Astra DB connect page for your database.
-![graphql-endpoint-1](tutorial/images/graphql-keyspace-url-01.png)
-Then scroll down to find the endpoint for your keyspace.
-![graphql-endpoint-1](tutorial/images/graphql-keyspace-url-02.png)
-
-## 6. Configure Environment Variables and Install Dependencies
-
-✅ Create `.env` file (do _not_ leave curly brackets)
-
-```ini
-ASTRA_DB_APPLICATION_TOKEN={ your_token }
-ASTRA_GRAPHQL_ENDPOINT={ your_endpoint }
-```
-
-![env-file](tutorial/images/env_file.png)
-
-
-👩‍💻  Install all the packages
-
-```bash
-npm install
-```
-
-## 7. Launch your app
-  * Run the application 
-  ```
-  netlify dev
-  ```
-  * The application should automatically launch in the GitPod preview pane
-
-## 8. Connect Netlify to your site
-
-Execute each of the commands below to link your code to your Netlify deployment.
-
-✅ **Step 8a:**  we'll need to **STOP** the `netlify dev` command we issued a moment ago. In the terminal where you executed the netlify command issue a `CTRL+C` (control key + the C key) in order to stop the process.
-
-✅ **Step 8b:** Enter the following command to pop up a browser to authenticate with netlify
-
-  ```
-  netlify login
-  ```
-
-*👁️ Expected output*
-```
-Opening https://app.netlify.com/authorize?....
-⠋ Waiting for authorization...^C
-```
-
-✅ **Step 8c:** Open the link in a new WINDOW for the link to work, and authorize Netlify CLi to access Netlify on your behalf.
-
-  > When using GitPod the preview pane **will not display this properly.** You must click the "open in a new window" button in the very top right of the preview pane._
-
-*👁️ Expected output*
-
-```
-You are now logged into your Netlify account!
-Run netlify status for account details
-To see all available commands run: netlify help
-gitpod /workspace/appdev-week3-graphql $ 
-```
-
-✅ **Step 8d:** link your workspace to the associated site with the following command
-
-```
-netlify link
-```
-
-*👁️ Expected output*
-
-![image](tutorial/images/netlify-link.png?raw=true)
-
-✅ **Step 8e:** take the .env file upload it to netlify
-  
-  ```
-  netlify env:import .env
-  ```
-
-<!--
-  * Will be used to allow you to execute `netlify open`
-  ```
-  netlify sites:list
-  ```
--->
 
 ## 9. Deploy to production
 Now that you've hooked everything up, time to deploy to production.
