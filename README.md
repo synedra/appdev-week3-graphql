@@ -73,11 +73,11 @@ That's it, you are done! Expect an email next week!
 1. [Create Astra DB Instance](#1-login-or-register-to-astradb-and-create-database)
 2. [Deploy to Netlify](#2-deploy-to-netlify)
 5. [Clone your GitHub repository](#3-clone-your-github-repository)
-6. [Launch GitPod](4-launch-gitpod-ide)
-3. [Create a security token](#2-create-a-security-token)
-7. [Install the Netlify CLI](#6-install-the-netlify-cli-command-line-interface)
-8. [Connect Netlify to your site](#9-connect-netlify-to-your-site)
-9. [Launch your App Locally](#8-launch-your-app)
+6. [Launch GitPod IDE](#4-launch-gitpod-ide)
+7. [Create security token](#5-create-and-store-a-security-token)
+8. [Install the Netlify CLI](#8-install-the-netlify-cli)
+9. [Connect Netlify to your site](#9-connect-netlify-to-your-site)
+10. [Launch your App Locally](#8-launch-your-app)
 
 ### Part II - Manipulating data
 1. [Create table **genre** with GraphQL](#3-create-table-genre-with-graphql)
@@ -183,6 +183,65 @@ This will take a few minutes.
 ```bash
 npm install
 ```
+
+[🏠 Back to Table of Contents](#table-of-contents)
+
+## 4. Launch GitPod IDE
+- Click the button to launch the GitPod IDE from **YOUR** repository.
+
+* _Supported by <img src="tutorial/images/chrome-logo.svg" height="20"/> Chrome and <img src="tutorial/images/firefox-logo.svg" height="20"/> Firefox_
+
+### WAIT! Before moving on ensure you are working out of YOUR repository, not the datastaxdevs repository.
+
+![correct notcorrect](tutorial/images/correct-not-correct.png?raw=true)
+
+If you are still using the `datastaxdevs` repo please ensure to follow the previous step, [step3](#3-clone-your-github-repository) to get to your repo.
+
+ * Ok, I've got it, just give me the button already
+ * <details>
+     <summary>CLICK HERE to launch GitPod</summary>
+
+     [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
+   </details>
+   
+ℹ️ _It may take a moment for GitPod to fully initialize.
+
+[🏠 Back to Table of Contents](#table-of-contents)
+
+## 5. Create and store a security token
+
+✅  **Step 5a:**  [Create a token for your app](https://docs.datastax.com/en/astra/docs/manage-application-tokens.html) to use in the settings screen. Use "Database Administrator" permission.
+
+✅  **Step 5b:**  Copy the token value (eg `AstraCS:KDfdKeNREyWQvDpDrBqwBsUB:ec80667c....`) in your clipboard and save the CSV, this value will not be available afterward.
+
+**👁️ Expected output**
+- <details><summary>Show me!</summary>
+    <img src="img/astra-create-token.gif?raw=true" />
+</details>
+
+✅  **Step 5c:**  In the terminal, install astra-setup module and run it, using the `AstraCS:` token you just copied.
+``` bash
+npm install -g astra-setup
+npm exec astra-setup netflix_workshop_db netflix_keyspace
+```
+
+[🏠 Back to Table of Contents](#table-of-contents)
+
+##6. Install the Netlify CLI
+ * In the `/workspace/appdev-week3-graphql` directory (where you start) run the following command to install the netlify-cli
+ ```
+ npm install -g netlify-cli
+```
+
+ * <details><summary>Show me!</summary>
+    <img src="tutorial/images/netlify-install-cli.png?raw=true" />
+    </details>
+
+
+
+
+
+
 ## 8. Connect Netlify to your site
 
 Execute each of the commands below to link your code to your Netlify deployment.
@@ -243,59 +302,6 @@ netlify link
   netlify dev
   ```
   * The application should automatically launch in the GitPod preview pane
-
-
-## 2. Create and store a security token
-
-✅  **Step 2a:**  [Create a token for your app](https://docs.datastax.com/en/astra/docs/manage-application-tokens.html) to use in the settings screen. Use "Database Administrator" permission.
-
-✅  **Step 2b:**  Copy the token value (eg `AstraCS:KDfdKeNREyWQvDpDrBqwBsUB:ec80667c....`) in your clipboard and save the CSV, this value will not be available afterward.
-
-**👁️ Expected output**
-- <details><summary>Show me!</summary>
-    <img src="img/astra-create-token.gif?raw=true" />
-</details>
-
-✅  **Step 2c:**  In the terminal, install astra-setup module and run it, using the `AstraCS:` token you just copied.
-``` bash
-npm install -g astra-setup
-npm exec astra-setup netflix_workshop_db netflix_keyspace
-```
-
-
-
-[🏠 Back to Table of Contents](#table-of-contents)
-
-## 3. Get your environment ready
-- Click the button to launch the GitPod IDE from **YOUR** repository.
-
-* _Supported by <img src="tutorial/images/chrome-logo.svg" height="20"/> Chrome and <img src="tutorial/images/firefox-logo.svg" height="20"/> Firefox_
-
-### WAIT! Before moving on ensure you are working out of YOUR repository, not the datastaxdevs repository.
-
-![correct notcorrect](tutorial/images/correct-not-correct.png?raw=true)
-
-If you are still using the `datastaxdevs` repo please ensure to follow the previous step, [step3](#3-clone-your-github-repository) to get to your repo.
-
- * Ok, I've got it, just give me the button already
- * <details>
-     <summary>CLICK HERE to launch GitPod</summary>
-
-     [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
-   </details>
-   
-ℹ️ _It may take a moment for GitPod to fully initialize.
-
-## 4. Install the Netlify CLI (Command Line Interface)
- * In the `/workspace/appdev-week3-graphql` directory (where you start) run the following command to install the netlify-cli
- ```
- npm install -g netlify-cli
-```
-
- * <details><summary>Show me!</summary>
-    <img src="tutorial/images/netlify-install-cli.png?raw=true" />
-    </details>
-
 
 
 
