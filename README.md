@@ -197,12 +197,7 @@ npm install
 
 If you are still using the `datastaxdevs` repo please ensure to follow the previous step, [step3](#3-clone-your-github-repository) to get to your repo.
 
- * Ok, I've got it, just give me the button already
- * <details>
-     <summary>CLICK HERE to launch GitPod</summary>
-
-     [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
-   </details>
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
    
 ℹ️ _It may take a moment for GitPod to fully initialize.
 
