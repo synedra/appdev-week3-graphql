@@ -178,12 +178,6 @@ This will take a few minutes.
     </details>
 
 
-👩‍💻  Install all the packages
-
-```bash
-npm install
-```
-
 [🏠 Back to Table of Contents](#table-of-contents)
 
 ## 4. Launch GitPod IDE
