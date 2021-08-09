@@ -72,7 +72,7 @@ That's it, you are done! Expect an email next week!
 ### Part I - DB & Workspace setup
 1. [Create Astra DB Instance](#1-login-or-register-to-astradb-and-create-database)
 2. [Deploy to Netlify](#2-deploy-to-netlify)
-5. [Clone your GitHub repository](#3-clone-your-github-repository)
+5. [Browse to your GitHub repository](#3-browse-to-your-github-repository)
 6. [Launch GitPod IDE](#4-launch-gitpod-ide)
 7. [Create security token](#5-create-and-store-a-security-token)
 8. [Install the Netlify CLI](#8-install-the-netlify-cli)
@@ -169,7 +169,7 @@ This will take a few minutes.
     <img src="tutorial/images/deploy-4.png" />
     </details>
 
-## 3. Clone your GitHub repository
+## 3. Browse to your GitHub repository
 
   * Click on the `GitHub` in `Deploys from GitHub` to get back to your new repository.  Scroll to where you were in the README.
     <details>
