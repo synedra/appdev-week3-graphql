@@ -7,7 +7,7 @@ tasks:
       npm install -g netlify-cli
       npm install
     command: |
-      git remote -v | grep synedra && exit
+      git remote -v | grep synedra && gp open wrong-workspace.md && exit
       git remote -v
       echo "workshop-astra-NETFLIX gitpod ready - LET'S DO THIS!"
       gp open README.md
